@@ -1,0 +1,22 @@
+defaultTasks 'clean', 'build'
+
+apply plugin: "java"
+apply plugin: "idea"
+apply from: "${rootDir}/libraries.gradle"
+
+repositories {
+    jcenter()
+	mavenCentral()
+}
+
+idea.module {
+    downloadSources = true
+}
+
+dependencies {
+    compile libs.slf4jApi
+
+    runtime libs.logback
+
+    testCompile libs.test.junit
+}
